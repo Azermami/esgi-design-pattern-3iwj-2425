@@ -17,6 +17,13 @@ jobs:
       ex4: ${{ steps.filter.outputs.ex4 }}
       ex5: ${{ steps.filter.outputs.ex5 }}
       ex6: ${{ steps.filter.outputs.ex6 }}
+      ex7: ${{ steps.filter.outputs.ex7 }}
+      ex8: ${{ steps.filter.outputs.ex8 }}
+      ex9: ${{ steps.filter.outputs.ex9 }}
+      ex10: ${{ steps.filter.outputs.ex10 }}
+      gilded_rose: ${{ steps.filter.outputs.gilded_rose }}
+      ex5: ${{ steps.filter.outputs.ex5 }}
+      ex6: ${{ steps.filter.outputs.ex6 }}
     steps:
     - uses: dorny/paths-filter@v3
       id: filter
@@ -30,6 +37,20 @@ jobs:
             - 'src/Exercice3/**'
           ex4:
             - 'src/Exercice4/**'
+          ex5:
+            - 'src/Exercice5/**'
+          ex6:
+            - 'src/Exercice6/**'
+          ex7:
+            - 'src/Exercice7/**'
+          ex8:
+            - 'src/Exercice8/**'
+          ex9:
+            - 'src/Exercice9/**'
+          ex10:
+            - 'src/Exercice10/**'
+          gilded_rose:
+            - 'src/TheGildedRose/**'
           ex5:
             - 'src/Exercice5/**'
           ex6:
@@ -97,6 +118,118 @@ jobs:
       uses: php-actions/phpunit@master
       with:
         testsuite: ex4
+        args: --testdox
+
+  ex5:
+    needs: changes
+    if: ${{ needs.changes.outputs.ex5 == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+    - uses: actions/checkout@v3
+    - uses: php-actions/composer@v6
+    - name: Exercice 5
+      id: ex5
+      uses: php-actions/phpunit@master
+      with:
+        testsuite: ex5
+        args: --testdox
+
+  ex6:
+    needs: changes
+    if: ${{ needs.changes.outputs.ex6 == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+    - uses: actions/checkout@v3
+    - uses: php-actions/composer@v6
+    - name: Exercice 6
+      id: ex6
+      uses: php-actions/phpunit@master
+      with:
+        testsuite: ex6
+        args: --testdox
+
+  ex7:
+    needs: changes
+    if: ${{ needs.changes.outputs.ex7 == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+    - uses: actions/checkout@v3
+    - uses: php-actions/composer@v6
+    - name: Exercice 7
+      id: ex7
+      uses: php-actions/phpunit@master
+      with:
+        testsuite: ex7
+        args: --testdox
+
+  ex8:
+    needs: changes
+    if: ${{ needs.changes.outputs.ex8 == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+    - uses: actions/checkout@v3
+    - uses: php-actions/composer@v6
+    - name: Exercice 8
+      id: ex8
+      uses: php-actions/phpunit@master
+      with:
+        testsuite: ex8
+        args: --testdox
+
+  ex9:
+    needs: changes
+    if: ${{ needs.changes.outputs.ex9 == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+    - uses: actions/checkout@v3
+    - uses: php-actions/composer@v6
+    - name: Exercice 9
+      id: ex9
+      uses: php-actions/phpunit@master
+      with:
+        testsuite: ex9
+        args: --testdox
+
+  ex10:
+    needs: changes
+    if: ${{ needs.changes.outputs.ex10 == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+    - uses: actions/checkout@v3
+    - uses: php-actions/composer@v6
+    - name: Exercice 10
+      id: ex10
+      uses: php-actions/phpunit@master
+      with:
+        testsuite: ex10
+        args: --testdox
+
+  gilded_rose:
+    needs: changes
+    if: ${{ needs.changes.outputs.gilded_rose == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+    - uses: actions/checkout@v3
+    - uses: php-actions/composer@v6
+    - name: The Gilded Rose
+      id: gilded_rose
+      uses: php-actions/phpunit@master
+      with:
+        testsuite: gilded_rose
         args: --testdox
 
   ex5:
